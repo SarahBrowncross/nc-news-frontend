@@ -12,7 +12,7 @@ function App() {
       <Router>
         <AllArticles path="/"/>
         <SingleArticle path='/articles/:article_id'/>
-        <AllArticles path="/topic"/>
+        <AllArticles path="/topic/:topic_slug"/>
       </Router>
     </div>
   );

@@ -9,16 +9,25 @@ class AllArticles extends React.Component {
 	};
 
 	componentDidMount() {
-		console.log(this.props, 'props')
-		axios.get('https://sarah-nc-news.herokuapp.com/api/articles', {params : {topic: this.props.topic}})
+		axios.get('https://sarah-nc-news.herokuapp.com/api/articles', {params : {topic: this.props.topic_slug}})
 			.then((res) => {
-				console.log(res.data.articles, 'articles')
 				this.setState({
 					articles: res.data.articles,
 					isLoading: false,
 				});
 			});
 	};
+
+	componentDidUpdate(prevProps) {
+		if (prevProps.topic_slug !== this.props.topic_slug) {
+			axios.get(`https://sarah-nc-news.herokuapp.com/api/articles?topic=${this.props.topic_slug}`)
+			.then((res) => {
+				this.setState({
+					articles: res.data.articles
+				})
+			})
+		}
+	}
 
 	render() {
 		if (this.state.isLoading) return <p>Articles loading...</p>
