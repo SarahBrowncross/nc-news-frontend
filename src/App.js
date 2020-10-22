@@ -3,7 +3,7 @@ import './App.css';
 import { Router } from '@reach/router';
 import Header from './components/Header';
 import AllArticles from './pages/AllArticles';
-import SingleArticle from './pages/SingleArticle';
+import SingleArticleold from './pages/SingleArticleold';
 
 
 function App() {
@@ -12,7 +12,7 @@ function App() {
       <Header />
       <Router>
         <AllArticles path="/"/>
-        <SingleArticle path='/articles/:article_id'/>
+        <SingleArticleold path='/articles/:article_id'/>
         <AllArticles path="/topic/:topic_slug"/>
       </Router>
     </div>

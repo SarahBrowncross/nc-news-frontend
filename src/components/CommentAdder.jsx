@@ -23,20 +23,22 @@ class CommentAdder extends React.Component {
 			body,
 		} = this.state;
 		axios.post(`https://sarah-nc-news.herokuapp.com/api/articles/${this.props.articleID}/comments`, {username, body})
+		.then((res) => {
+			this.setState({
+				username: 'jessjelly',
+				body: '',
+			});
+			this.props.addComment(
+				res.data.comment
+			);
+		})
 		.catch((res) => {
 			this.props.addComment(
 				'',
 				 'ERROR: could not post comment'
 			)
 		})
-		this.setState({
-			username: 'jessjelly',
-			body: '',
-		});
-		this.props.addComment(
-			username,
-			body,
-		);
+		
 		
 		
 	};
