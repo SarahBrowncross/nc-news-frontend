@@ -9,7 +9,6 @@ import SingleArticleold from './pages/SingleArticleold';
 function App() {
   return (
     <div className="App">
-      <Header />
       <Router>
         <AllArticles path="/"/>
         <SingleArticleold path='/articles/:article_id'/>

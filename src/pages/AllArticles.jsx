@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { Link } from '@reach/router';
 import Nav from '../components/Nav';
+import Header from '../components/Header';
 
 class AllArticles extends React.Component {
 	state = {
@@ -53,8 +54,11 @@ class AllArticles extends React.Component {
 		if (this.state.isLoading) return <p>Articles loading...</p>
 		return (
 			<main>
+			<Header>
 			<Nav sortArticles={this.sortArticles} />
-			<div>
+			</Header>
+			
+			<div className="all-articles">
 				<ul>
 					{this.state.articles.map((article) => {
 						return (

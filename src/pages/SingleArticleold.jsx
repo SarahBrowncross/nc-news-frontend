@@ -1,6 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 import CommentAdder from '../components/CommentAdder';
+import PictureDisplayer from '../components/PictureDisplayer';
+import Header from '../components/Header'
 
 
 class SingleArticle extends React.Component {
@@ -9,24 +11,24 @@ class SingleArticle extends React.Component {
         isLoading: true,
         error: null,
         comments: [],
-		newComment: null,
-		username: 'jessjelly'
-	};
-	
-	deleteComment = (commentId) => {
-		this.setState((prevState) => {
-			const updatedComments = prevState.comments.filter(comment => comment.comment_id !== commentId)
-			return {
-				comments: updatedComments
-			}
-		})
-		axios.delete(`https://sarah-nc-news.herokuapp.com/api/comments/${commentId}`)
-	}
+        newComment: null,
+        username: 'jessjelly'
+    };
+
+    deleteComment = (commentId) => {
+        this.setState((prevState) => {
+            const updatedComments = prevState.comments.filter(comment => comment.comment_id !== commentId)
+            return {
+                comments: updatedComments
+            }
+        })
+        axios.delete(`https://sarah-nc-news.herokuapp.com/api/comments/${commentId}`)
+    }
 
     addComment = (newComment) => {
         this.setState((prevState) => {
-			const updatedComments = [newComment, ...prevState.comments]
-			return {
+            const updatedComments = [newComment, ...prevState.comments]
+            return {
                 article: {
                     ...prevState.article,
                     comment_count: +prevState.article.comment_count + 1
@@ -51,7 +53,7 @@ class SingleArticle extends React.Component {
                 });
             })
             .catch((res) => {
-                this.setState ({
+                this.setState({
                     error: {
                         status: res.status,
                         message: res.data.msg,
@@ -64,18 +66,21 @@ class SingleArticle extends React.Component {
     render() {
         if (this.state.isLoading) return <p>Article loading...</p>
         return (
-            <div className="article">
-                <p>{this.state.article.topic}</p>
-                <h1>{this.state.article.title}</h1>
-                <div className='votes-and-comments'>
-                    <h2>By {this.state.article.author}</h2>
-                    <p>Votes: {this.state.article.votes}</p>
-                </div>
-                <p>{this.state.article.body}</p>
-                <CommentAdder addComment={this.addComment} articleID={this.props.article_id} />
-                <p>Comments: {this.state.article.comment_count}</p>
+            <main className="article-main">
+                <Header small/>
+                <PictureDisplayer topic={this.state.article.topic} />
+                <div className="article">
+                    <p className='article-topic'>{this.state.article.topic}</p>
+                    <h1>{this.state.article.title}</h1>
+                    <div className='votes-and-comments'>
+                        <p className="author">By {this.state.article.author}</p>
+                        <p>Votes: {this.state.article.votes}</p>
+                    </div>
+                    <p className='article-body'>{this.state.article.body}</p>
+                    <CommentAdder addComment={this.addComment} articleID={this.props.article_id} />
+                    <p>Comments: {this.state.article.comment_count}</p>
 
-                {/* /*{this.state.newComment &&
+                    {/* /*{this.state.newComment &&
                     <div className="comment-card">
                         <div className='comments-header'>
                             <p>{this.state.newComment.username}</p>
@@ -85,22 +90,23 @@ class SingleArticle extends React.Component {
 						<button onClick={() => {this.deleteComment(this.state.newComment.comment_id)}
 							 }>delete</button>
                     </div>}*/ }
-                {this.state.comments.map((comment) => {
-                    return (
-                        <div className="comment-card">
-                            <div className='comments-header'>
-                                <p>{comment.author}</p>
-                                <p>Votes: {comment.votes}</p>
+                    {this.state.comments.map((comment) => {
+                        return (
+                            <div className="comment-card">
+                                <div className='comments-header'>
+                                    <p>{comment.author}</p>
+                                    <p>Votes: {comment.votes}</p>
+                                </div>
+                                <p>{comment.body}</p>
+                                {(comment.author === this.state.username) &&
+                                    <button onClick={() => { this.deleteComment(comment.comment_id) }
+                                    }>delete</button>
+                                }
                             </div>
-                             <p>{comment.body}</p>
-							 {(comment.author === this.state.username) && 
-							 <button onClick={() => {this.deleteComment(comment.comment_id)}
-							 }>delete</button>
-							 }
-                        </div>
-                    );
-                })}
-            </div>
+                        );
+                    })}
+                </div>
+            </main>
         );
     }
 }

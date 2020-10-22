@@ -1,11 +1,11 @@
 
 import React from 'react';
 
-function Header() {
+function Header(props) {
     return (
-    <header className="App-header">
+    <header className={props.small ? "small-App-header" : "App-header"}>
         <h1>NC NEWS</h1>
-        
+        {props.children}
     </header>
     )
 }
