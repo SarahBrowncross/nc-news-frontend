@@ -62,3 +62,13 @@ nav {
   display: flex;
   justify-content: space-between;
 }
+
+.comments-header{
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+}
+
+.comment-card{
+  margin: 10px 0px;
+}

@@ -5,6 +5,7 @@ import Header from './components/Header';
 import AllArticles from './pages/AllArticles';
 import SingleArticle from './pages/SingleArticle';
 
+
 function App() {
   return (
     <div className="App">
