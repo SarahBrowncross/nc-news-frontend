@@ -10,7 +10,7 @@ class VoteUpdater extends React.Component {
 		this.setState((currentState) => {
 			return {userVoteCount: currentState.userVoteCount + voteValue};
 		});
-		axios.patch(`https://sarah-nc-news.herokuapp.com/api/comments/${this.props.commentID}`,
+		axios.patch(`https://sarah-nc-news.herokuapp.com/api/${this.props.element}/${this.props.elementID}`,
 		{inc_votes: voteValue}
 		)
 		.then(() => {
@@ -24,10 +24,12 @@ class VoteUpdater extends React.Component {
 
 	render () {
 		return (
-			<div>
+			<div className='votes'>
+				<div className='vote-buttons'>
 				<button disabled={this.state.userVoteCount === 1} onClick={() => this.handleVote(1)} value={1}>^</button>
-				<p>Votes: {this.props.votes + this.state.userVoteCount}</p>
 				<button disabled={this.state.userVoteCount === -1} onClick={() => this.handleVote(-1)} value={-1}>v</button>
+				</div>
+				<p>Votes: {this.props.votes + this.state.userVoteCount}</p>
 			</div>
 		)
 	}

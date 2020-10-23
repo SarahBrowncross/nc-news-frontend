@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Link } from '@reach/router';
 import Nav from '../components/Nav';
 import Header from '../components/Header';
+import VoteUpdater from '../components/VoteUpdater';
 
 class AllArticles extends React.Component {
 	state = {
@@ -54,30 +55,32 @@ class AllArticles extends React.Component {
 		if (this.state.isLoading) return <p>Articles loading...</p>
 		return (
 			<main>
-			<Header>
-			<Nav sortArticles={this.sortArticles} />
-			</Header>
-			
-			<div className="all-articles">
-				<ul>
-					{this.state.articles.map((article) => {
-						return (
-							<div className="article-card">
-								<li>
-									<p className={`topic-${article.topic}`}>{article.topic}</p>
-									<Link to={`/articles/${article.article_id}`}>
-										<h2 className="title">{article.title}</h2>
-									</Link>
-									<div className="votes-and-comments">
-										<p>{article.votes} votes</p>
-										<p>{article.comment_count} comments</p>
-									</div>
-								</li>
-							</div>
-						);
-					})}
-				</ul>
-			</div>
+				<Header>
+					<Nav sortArticles={this.sortArticles} />
+				</Header>
+
+				<div className="all-articles">
+					<ul>
+						{this.state.articles.map((article) => {
+							return (
+								<div className="article-card">
+									<li>
+										<Link to={`/topic/${article.topic}`}>
+											<p className={`topic-${article.topic}`}>{article.topic}</p>
+										</Link>
+										<Link to={`/articles/${article.article_id}`}>
+											<h2 className="title">{article.title}</h2>
+										</Link>
+										<div className="votes-and-comments">
+											<VoteUpdater votes={article.votes} elementID={article.article_id} element='articles' />
+											<p>{article.comment_count} comments</p>
+										</div>
+									</li>
+								</div>
+							);
+						})}
+					</ul>
+				</div>
 			</main>
 		);
 	}

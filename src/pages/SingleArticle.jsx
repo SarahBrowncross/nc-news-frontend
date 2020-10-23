@@ -77,7 +77,7 @@ class SingleArticle extends React.Component {
                     <h1>{this.state.article.title}</h1>
                     <div className='votes-and-comments'>
                         <p className="author">By {this.state.article.author}</p>
-                        <p>Votes: {this.props.votes}</p>
+                        <VoteUpdater votes={this.state.article.votes} elementID={this.props.article_id} element='articles'/>
                     </div>
                     <p className='article-body'>{this.state.article.body}</p>
                     <CommentAdder addComment={this.addComment} articleID={this.props.article_id} />
@@ -87,7 +87,7 @@ class SingleArticle extends React.Component {
                             <div key={comment.comment_id} className="comment-card">
                                 <div className='comments-header'>
                                     <p>{comment.author}</p>
-                                    <VoteUpdater votes={comment.votes} commentID={comment.comment_id} />
+                                    <VoteUpdater votes={comment.votes} elementID={comment.comment_id} element='comments'/>
                                 </div>
                                 <p>{comment.body}</p>
                                 {(comment.author === this.state.username) &&

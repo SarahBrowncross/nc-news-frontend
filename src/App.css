@@ -212,3 +212,12 @@ a {
 .submit-button {
   width: 100px;
 }
+
+.votes {
+  display: flex;
+}
+
+.vote-buttons {
+  display: flex;
+  flex-direction: column;
+}
