@@ -43,6 +43,7 @@ ul {
   padding: 5px;
   max-width: 600px;
   line-height: 2em;
+  color: #333333
 }
 
 .title {
@@ -62,7 +63,7 @@ p {
   margin: 0px;
 }
 
-.topic{
+.topic-football{
  align-self: end;
  background-color: #3b5998;
  width: fit-content;
@@ -74,6 +75,30 @@ p {
  margin-bottom: 0.8em;
 }
 
+.topic-cooking{
+  align-self: end;
+  background-color: #983b3b;
+  width: fit-content;
+  padding: 0em 1em ;
+  border-radius: 5px;
+  color: white;
+  font-size: small;
+  line-height: 1.2em;
+  margin-bottom: 0.8em;
+ }
+
+ .topic-coding{
+  align-self: end;
+  background-color: #3b983b;
+  width: fit-content;
+  padding: 0em 1em ;
+  border-radius: 5px;
+  color: white;
+  font-size: small;
+  line-height: 1.2em;
+  margin-bottom: 0.8em;
+ }
+
 nav {
   width: 90vw;
   display: flex;
@@ -84,6 +109,7 @@ nav {
   display: flex;
   justify-content: space-between;
   font-weight: bold;
+  align-items: flex-end;
 }
 
 .comment-card{
@@ -116,8 +142,26 @@ nav {
   width: 100vw;
 }
 
-.article-topic {
+.article-topic-football {
   background-color: #3b5998;
+  width: fit-content;
+  padding: 0em 1em ;
+  border-radius: 5px;
+  color: white;
+  font-size: small;
+}
+
+.article-topic-cooking {
+  background-color: #983b3b;
+  width: fit-content;
+  padding: 0em 1em ;
+  border-radius: 5px;
+  color: white;
+  font-size: small;
+}
+
+.article-topic-coding {
+  background-color: #3b983b;
   width: fit-content;
   padding: 0em 1em ;
   border-radius: 5px;
@@ -148,4 +192,23 @@ h1 {
   align-items: center;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
 
+.comment-form {
+  margin: 2em 0em;
+  display: flex;
+  flex-direction: column;
+}
+
+.inputField {
+  max-width: 300px;
+  height: 3em;
+  margin-bottom: 1em;
+}
+
+.submit-button {
+  width: 100px;
+}

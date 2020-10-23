@@ -45,8 +45,8 @@ class CommentAdder extends React.Component {
 
 	render() {
 		return (
-			<form onSubmit={this.handleSubmit}>
-				<label htmlFor="comment_body" class="text">
+			<form className='comment-form' onSubmit={this.handleSubmit}>
+				<label htmlFor="comment_body" className="text">
 					Comment:
 			</label>
 				<input
@@ -56,7 +56,7 @@ class CommentAdder extends React.Component {
 					onChange={this.handleCommentChange}
 					value={this.state.body}
 				/>
-				<button type="submit">Submit</button>
+				<button className="submit-button" type="submit">Submit</button>
 			</form>
 		)
 	}

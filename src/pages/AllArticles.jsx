@@ -64,7 +64,7 @@ class AllArticles extends React.Component {
 						return (
 							<div className="article-card">
 								<li>
-									<p className="topic">{article.topic}</p>
+									<p className={`topic-${article.topic}`}>{article.topic}</p>
 									<Link to={`/articles/${article.article_id}`}>
 										<h2 className="title">{article.title}</h2>
 									</Link>

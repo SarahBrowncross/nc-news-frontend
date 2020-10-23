@@ -15,7 +15,7 @@ function PictureDisplayer(props) {
 	}
 	return (
 		<header className="article-header">
-			<img src={image} alt={`photo of ${props.topic}`} />
+			<img src={image} alt={props.topic} />
 
 		</header>
 	)
