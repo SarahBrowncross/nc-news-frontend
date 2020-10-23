@@ -25,9 +25,9 @@ class VoteUpdater extends React.Component {
 	render () {
 		return (
 			<div className='votes'>
-				<div className='vote-buttons'>
-				<button disabled={this.state.userVoteCount === 1} onClick={() => this.handleVote(1)} value={1}>^</button>
-				<button disabled={this.state.userVoteCount === -1} onClick={() => this.handleVote(-1)} value={-1}>v</button>
+				<div className='vote-button-container'>
+				<button className='vote-button' disabled={this.state.userVoteCount === 1} onClick={() => this.handleVote(1)} value={1}>^</button>
+				<button className='vote-button' disabled={this.state.userVoteCount === -1} onClick={() => this.handleVote(-1)} value={-1}>v</button>
 				</div>
 				<p>Votes: {this.props.votes + this.state.userVoteCount}</p>
 			</div>
