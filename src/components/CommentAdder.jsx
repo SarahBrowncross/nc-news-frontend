@@ -49,12 +49,13 @@ class CommentAdder extends React.Component {
 				<label htmlFor="comment_body" className="text">
 					Comment:
 			</label>
-				<input
+				<textarea
 					id="comment_body"
 					name="comment_body"
 					className="inputField"
 					onChange={this.handleCommentChange}
 					value={this.state.body}
+					required
 				/>
 				<button className="submit-button" type="submit">Submit</button>
 			</form>

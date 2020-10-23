@@ -207,10 +207,20 @@ a {
   max-width: 300px;
   height: 3em;
   margin-bottom: 1em;
+  border:1px solid #c5c5c5
+}
+
+.inputField:focus {
+  outline: none;
 }
 
 .submit-button {
   width: 100px;
+  background-color:  #3b5998;
+  padding: 0em 1em ;
+  border-radius: 5px;
+  color: white;
+  font-size: small;
 }
 
 .votes {
@@ -226,10 +236,95 @@ a {
 
 .vote-button {
   border: none;
-  background-color: azure;
+  background: transparent;
   border-radius: 3px;
+  color: #333333;
+  cursor: pointer;
 }
 
 .vote-button:hover:enabled {
   box-shadow: 1px 2px rgba(0, 0, 0, 0.18);
 }
+
+.vote-button:focus {
+  outline:none;
+}
+
+.vote-button:disabled {
+  background: #e5e5e5;
+  -webkit-box-shadow: inset 0px 0px 5px #c1c1c1;
+     -moz-box-shadow: inset 0px 0px 5px #c1c1c1;
+          box-shadow: inset 0px 0px 5px #c1c1c1;
+   outline: none;
+}
+
+.error-main {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.error {
+  margin: 20vh;
+  border-radius: 5px;
+  box-shadow: 1px 2px rgba(0, 0, 0, 0.18);
+  background-color: azure;
+  padding: 3em;
+  width: 65vw;
+  max-width: 600px;
+  line-height: 2em;
+  color: #333333;
+  text-align: center;
+}
+
+#comment-selector {
+  width: 100px;
+}
+
+.selector {
+  font-size: 16px;
+  padding: 0 14px 0 14px;
+  background:  #BBF1F1;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.select {
+  width: 130px;
+}
+
+.selector .select select{
+  background: transparent;
+  line-height: 1;
+  border: 0;
+  padding: 0;
+  border-radius: 0;
+  width: 120%;
+  z-index: 10;
+  font-size: 1em;
+}
+
+.selector .select select:focus{
+  outline:none;
+}
+
+.selector .select{
+  width: 90%;
+  background:url('/nc-news/src/images/dropdownarrow.JPG') no-repeat;
+  background-position:80% center;
+}
+
+.delete-button {
+    width: 70px;
+    background-color:  #983b3b;
+    padding: 0em 1em ;
+    border-radius: 5px;
+    color: white;
+    font-size: small;
+  }
+  
+
+

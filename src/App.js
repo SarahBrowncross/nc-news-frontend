@@ -3,6 +3,7 @@ import './App.css';
 import { Router } from '@reach/router';
 import AllArticles from './pages/AllArticles';
 import SingleArticle from './pages/SingleArticle';
+import ErrorDisplay from './components/ErrorDisplay';
 
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
         <AllArticles path="/"/>
         <SingleArticle path='/articles/:article_id'/>
         <AllArticles path="/topic/:topic_slug"/>
+        <ErrorDisplay default status={404} message="This page doesn't exist" />
       </Router>
     </div>
   );

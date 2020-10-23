@@ -9,7 +9,7 @@ class AllArticles extends React.Component {
 	state = {
 		articles: [],
 		isLoading: true,
-		sortBy: ''
+		sortBy: undefined
 	};
 
 	componentDidMount() {
@@ -63,8 +63,8 @@ class AllArticles extends React.Component {
 					<ul>
 						{this.state.articles.map((article) => {
 							return (
-								<div className="article-card">
-									<li>
+								
+									<li key={article.article_id} className="article-card">
 										<Link to={`/topic/${article.topic}`}>
 											<p className={`topic-${article.topic}`}>{article.topic}</p>
 										</Link>
@@ -76,7 +76,7 @@ class AllArticles extends React.Component {
 											<p>{article.comment_count} comments</p>
 										</div>
 									</li>
-								</div>
+								
 							);
 						})}
 					</ul>
